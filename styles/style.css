@@ -101,19 +101,23 @@ i {
 .card {
     background-color: whitesmoke;
     max-width: 70ch;
-    margin: 2rem auto;
+    margin-inline: auto;
+
+    /* margin-block-start: clamp(0rem, 3vw, 3rem); */
     padding: 1rem;
     font-size: .9rem;
 }
 
 .card h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding-top: .75em;
 }
 
 .card__header p {
-    font-size: .75em;
-    opacity: .75;
+    font-size: .825em;
+    color: dimgrey;
+    padding-bottom: 1.25em;
+    border-bottom: 1px solid grey;
 }
 
 .card p {
@@ -132,5 +136,6 @@ i {
 }
 
 .card button {
+    font-size: .75rem;
     padding: .5em;
 }
