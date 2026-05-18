@@ -1,5 +1,6 @@
-/* makes sizing simpler */
+/*** reset ***/
 
+/* makes sizing simpler */
 *,
 *::before,
 *::after {
@@ -52,8 +53,48 @@ h6 {
     text-wrap: balance;
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+/* Remove list styles on ul, ol elements with a list role, */
+/* which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
     list-style: none;
+}
+
+/**** variables ****/
+
+/**** global styles ****/
+
+/* body {
+    font-size: 1rem;
+} */
+
+h2 {
+    font-size: 2rem;
+}
+
+p {
+    margin-block: 1rem;
+}
+
+
+/* blocks */
+
+.card {
+    background-color: antiquewhite;
+    max-width: 70ch;
+    margin-inline: auto;
+
+}
+
+.card__header {
+    font-size: 1.25rem;
+}
+
+footer {
+    border: 1rem solid green;
+}
+
+img {
+    min-width: 100%;
+    max-height: 300px;
 }
