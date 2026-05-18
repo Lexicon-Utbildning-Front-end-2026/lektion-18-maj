@@ -1,4 +1,5 @@
-/*** reset ***/
+/**** reset ****/
+/* this section is for adding resets that makes a new clean base line for our CSS */
 
 /* makes sizing simpler */
 *,
@@ -24,26 +25,30 @@ video {
     display: block;
     max-width: 100%;
 
-    /* ONE of these might be relevant to change how the image squish or not */
+    /* ONE of these might be relevant to change how the image squish or clip */
     object-fit: cover;
     /* height: auto; */
 }
 
 body {
-    /* 4. Increase line-height */
+    /* Increase line-height for better readability */
     line-height: 1.5;
 }
 
+/* less line-height on headings to keep them more compact */
+/* usually 1.1 or maybe 1 depending on font choice */
 h1,
 h2,
 h3 {
-    line-height: 1.1;
+    line-height: 1;
 }
 
+/* don't leave one single word hanging in paragraphs */
 p {
     text-wrap: pretty;
 }
 
+/* make the rows more balanced so the headings looks nicer */
 h1,
 h2,
 h3,
@@ -53,48 +58,79 @@ h6 {
     text-wrap: balance;
 }
 
-/* Remove list styles on ul, ol elements with a list role, */
-/* which suggests default styling will be removed */
+/* Remove list styles on ul, ol elements with a list role */
 ul[role='list'],
 ol[role='list'] {
     list-style: none;
 }
 
+
 /**** variables ****/
+/* this section is for adding variables, more on that tomorrow */
+
 
 /**** global styles ****/
+/* here we have styles that are more generic for the whole page */
 
-/* body {
-    font-size: 1rem;
-} */
-
-h2 {
-    font-size: 2rem;
+body {
+    font-family: Raleway, sans-serif;
+    font-optical-sizing: auto;
 }
 
-p {
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+/* be careful with font-weights and be sure that the font supports the value you chose */
+strong {
+    font-weight: 600;
+}
+
+/* same with styles, since not all fonts have italic for example */
+i {
+    font-style: italic;
+}
+
+
+/**** blocks ****/
+/* this part is for styles for blocks like card, footer and so on */
+
+.card {
+    background-color: whitesmoke;
+    max-width: 70ch;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-size: .9rem;
+}
+
+.card h2 {
+    font-size: 2rem;
+    padding-top: .75em;
+}
+
+.card__header p {
+    font-size: .75em;
+    opacity: .75;
+}
+
+.card p {
     margin-block: 1rem;
 }
 
 
-/* blocks */
-
-.card {
-    background-color: antiquewhite;
-    max-width: 70ch;
-    margin-inline: auto;
-
+.card footer {
+    padding: 1em;
+    border: .125rem solid grey;
 }
 
-.card__header {
-    font-size: 1.25rem;
-}
-
-footer {
-    border: 1rem solid green;
-}
-
-img {
+.card img {
     min-width: 100%;
     max-height: 300px;
+}
+
+.card button {
+    padding: .5em;
 }
