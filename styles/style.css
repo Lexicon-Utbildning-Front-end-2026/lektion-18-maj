@@ -1,0 +1,60 @@
+/* makes sizing simpler */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* remove default spacing */
+* {
+    margin: 0;
+    padding: 0;
+
+    /* force styling of type through styling, rather than elements */
+    font: inherit;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+
+    /* ONE of these might be relevant to change how the image squish or not */
+    object-fit: cover;
+    /* height: auto; */
+}
+
+body {
+    /* 4. Increase line-height */
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
