@@ -30,18 +30,7 @@ video {
     /* height: auto; */
 }
 
-body {
-    /* Increase line-height for better readability */
-    line-height: 1.5;
-}
 
-/* less line-height on headings to keep them more compact */
-/* usually 1.1 or maybe 1 depending on font choice */
-h1,
-h2,
-h3 {
-    line-height: 1.0;
-}
 
 /* don't leave one single word hanging in paragraphs */
 p {
@@ -67,27 +56,62 @@ ol[role='list'] {
 
 /**** variables ****/
 /* this section is for adding variables, more on that tomorrow */
+:root {
+    /* font-families */
+    --ff-main: Raleway, sans-serif;
+    --ff-headings: "Josefin Sans", sans-serif;
+
+    /* font-weights */
+    --fw-bold: 600;
+    --fw-bolder: 700;
+
+    /* font-sizes */
+    --fs-small: .825rem;
+    --fs-large: 1.5rem;
+
+    /* line-heights */
+    --lh-tight: 1.0;
+    --lh-normal: 1.5;
+
+    /* colors */
+    --clr-gray-100: snow;
+    --clr-gray-400: grey;
+    --clr-gray-600: rgb(97, 97, 97);
+
+    /* spacings */
+    --spacing-small: .25rem;
+    --spacing-medium: 1rem;
+
+    /* sizes */
+    --max-card-width: 70ch;
+}
+
 
 
 /**** global styles ****/
 /* here we have styles that are more generic for the whole page */
-
 body {
-    font-family: Raleway, sans-serif;
+    font-family: var(--ff-main);
     font-optical-sizing: auto;
-    background-color: snow;
+    background-color: var(--clr-gray-100);
+
+    /* Increase line-height for better readability */
+    line-height: var(--lh-normal);
 }
 
 h1,
 h2,
 h3,
 h4 {
-    font-family: "Josefin Sans", sans-serif;
+    font-family: var(--ff-headings);
+    /* less line-height on headings to keep them more compact */
+    /* usually 1.1 or maybe 1 depending on font choice */
+    line-height: var(--lh-tight);
 }
 
 /* be careful with font-weights and be sure that the font supports the value you chose */
 strong {
-    font-weight: 600;
+    font-weight: var(--fw-bold);
 }
 
 /* same with styles, since not all fonts have italic for example */
@@ -96,49 +120,91 @@ i {
 }
 
 
+
+/**** utilities ****/
+/* utility classes only does one thing, for example color, font-size/weigth, padding  */
+.italic {
+    font-style: italic;
+}
+
+.text-l {
+    font-size: var(--fs-large);
+}
+
+.bg-gray-100 {
+    background-color: var(--clr-gray-100);
+}
+
+
+
+
 /**** blocks ****/
-/* this part is for styles for blocks like card, footer and so on */
+/* this part is for styles for blocks like card, footer and other things that are reusable as units */
 
 .card {
-    max-width: 70ch;
+    max-width: var(--max-card-width);
     font-size: .9rem;
     margin-inline: auto;
     /* margin-block-start: clamp(0rem, 3vw, 3rem); */
     padding: 1rem;
 
     background-color: whitesmoke;
-    border: .125rem solid grey;
+    border: .125rem solid var(--clr-gray-400);
+
+    /* nesting like this uses the space combinator */
+    /* so in the browser these will turn into: */
+    /*.card .header .heading {...} */
+    .header {
+        .heading {
+            font-size: 1.5rem;
+            padding-top: .75em;
+        }
+
+        p {
+            font-size: .825em;
+            color: dimgrey;
+            padding-bottom: 1.25em;
+            border-bottom: 1px solid grey;
+        }
+    }
+
+    p {
+        margin-block: 1rem;
+    }
+
+    img {
+        min-width: 100%;
+        max-height: 300px;
+    }
+
+    footer {
+        background-color: var(--clr-gray-100);
+        padding: 1em;
+        border: .125rem solid lightgray;
+    }
 }
 
-.card h2 {
-    font-size: 1.5rem;
-    padding-top: .75em;
-}
+.button {
+    /* example with fallback value for the --button-bg variable*/
+    --_bg-color: var(--button-bg, var(--clr-gray-100));
 
-.card__header p {
-    font-size: .825em;
-    color: dimgrey;
-    padding-bottom: 1.25em;
-    border-bottom: 1px solid grey;
-}
-
-.card p {
-    margin-block: 1rem;
-}
-
-
-.card footer {
-    background-color: snow;
-    padding: 1em;
-    border: .125rem solid lightgray;
-}
-
-.card img {
-    min-width: 100%;
-    max-height: 300px;
-}
-
-.card button {
-    font-size: .75rem;
     padding: .5em;
+    font-size: .75rem;
+    cursor: pointer;
+
+    background-color: var(--_bg-color);
+    color: contrast-color(var(--_bg-color));
+
+    /* & is a combinator that glues the nested selector to the parent */
+    /* this will combine as .button:hover and .button:focus-visible in the browser */
+    &:hover,
+    &:focus-visible {
+        background-color: blue;
+        color: contrast-color(blue);
+    }
+
+    &[data-type="secondary"] {
+        /* we can override/reuse the variable this way */
+        --_bg-color: var(--clr-gray-600);
+    }
 }
