@@ -1,0 +1,259 @@
+/**** reset ****/
+/* this section is for adding resets that makes a new clean base line for our CSS */
+
+/* makes sizing simpler */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* remove default spacing */
+* {
+    margin: 0;
+    padding: 0;
+
+    /* force styling of type through styling, rather than elements */
+    font: inherit;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+
+    /* ONE of these might be relevant to change how the image squish or clip */
+    object-fit: cover;
+    /* height: auto; */
+}
+
+
+
+/* don't leave one single word hanging in paragraphs */
+p {
+    text-wrap: pretty;
+}
+
+/* make the rows more balanced so the headings looks nicer */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/* Remove list styles on ul, ol elements with a list role */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+
+/**** Variables ****/
+/* this section is for adding variables, more on that tomorrow */
+:root {
+    /* font-families */
+    --ff-main: Raleway, sans-serif;
+    --ff-headings: "Josefin Sans", sans-serif;
+
+    /* font-weights */
+    --fw-bold: 600;
+    --fw-bolder: 700;
+
+    /* font-sizes */
+    --fs-xsmall: .75rem;
+    --fs-small: .825rem;
+    --fs-base: 1rem;
+    --fs-lg: 1.25rem;
+    --fs-xl: 1.5rem;
+
+    /* line-heights */
+    --lh-tight: 1.0;
+    --lh-normal: 1.5;
+
+    /* colors */
+    --clr-gray-50: #fafafa;
+    --clr-gray-100: snow;
+    --clr-gray-200: whitesmoke;
+    --clr-gray-300: lightgray;
+    --clr-gray-400: grey;
+    --clr-gray-500: dimgrey;
+    --clr-gray-600: rgb(97, 97, 97);
+
+    /* spacings */
+    --spacing-base: .25rem;
+    --spacing-xs: .5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+
+    /* sizes */
+    --max-card-width: 70ch;
+}
+
+
+
+/**** global styles ****/
+/* here we have styles that are more generic for the whole page */
+body {
+    font-family: var(--ff-main);
+    font-optical-sizing: auto;
+    background-color: var(--clr-gray-100);
+
+    /* Increase line-height for better readability */
+    line-height: var(--lh-normal);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--ff-headings);
+    /* less line-height on headings to keep them more compact */
+    /* usually 1.1 or maybe 1 depending on font choice */
+    line-height: var(--lh-tight);
+}
+
+/* be careful with font-weights and be sure that the font supports the value you chose */
+strong {
+    font-weight: var(--fw-bold);
+}
+
+/* same with styles, since not all fonts have italic for example */
+i {
+    font-style: italic;
+}
+
+
+
+/**** Utilities ****/
+/* utility classes only does one thing, for example color, font-size/weigth, padding  */
+/* you can still use these in bem, if so add a u- (for utility) so that it follows the convention */
+.u-italic {
+    font-style: italic;
+}
+
+.u-text-xs {
+    font-size: var(--fs-xsmall);
+}
+
+.u-text-sm {
+    font-size: var(--fs-small);
+}
+
+.u-text-lg {
+    font-size: var(--fs-lg);
+}
+
+.u-text-xl {
+    font-size: var(--fs-xl);
+}
+
+.u-bg-gray-50 {
+    background-color: var(--clr-gray-50);
+}
+
+.u-bg-gray-100 {
+    background-color: var(--clr-gray-100);
+}
+
+.u-bg-gray-200 {
+    background-color: var(--clr-gray-200);
+}
+
+.u-text-gray-100 {
+    color: var(--clr-gray-100);
+}
+
+.u-text-gray-500 {
+    color: var(--clr-gray-500);
+}
+
+.u-space-y-2>*+* {
+    margin-top: var(--spacing-xs);
+}
+
+
+/**** Blocks ****/
+/* CARD BLOCK */
+.card {
+    max-width: var(--max-card-width);
+    font-size: var(--fs-base);
+    margin-inline: auto;
+    padding: var(--spacing-sm);
+
+    background-color: var(--clr-gray-200);
+    border: 0.125rem solid var(--clr-gray-400);
+}
+
+/* CARD ELEMENTS */
+.card__image {
+    min-width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.card__header {
+    border-bottom: 1px solid var(--clr-gray-400);
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.card__heading {
+    font-size: var(--fs-lg);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.card__header p {
+    font-size: var(--fs-xsmall);
+    color: var(--clr-gray-500);
+    margin: 0;
+}
+
+.card__text {
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.card__footer {
+    padding: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    background-color: var(--clr-gray-100);
+    border: 0.125rem solid var(--clr-gray-300);
+    font-size: var(--fs-xsmall);
+}
+
+
+/* BUTTON BLOCK */
+.button {
+    /* example with fallback value for the --button-bg variable*/
+    --_bg-color: var(--button-bg, var(--clr-gray-50));
+
+    padding: var(--spacing-xs);
+    margin-right: var(--spacing-xs);
+    font-size: var(--fs-xsmall);
+    cursor: pointer;
+    border: 0.125rem solid var(--clr-gray-400);
+
+    background-color: var(--_bg-color);
+    color: contrast-color(var(--_bg-color));
+}
+
+/* BUTTON STATES */
+.button:hover,
+.button:focus-visible {
+    background-color: #0ea5e9;
+    color: white;
+}
+
+/* BUTTON MODIFIERS */
+.button--secondary {
+    /* we can override/reuse the variable this way */
+    --_bg-color: var(--clr-gray-600);
+    color: var(--clr-gray-100);
+}
