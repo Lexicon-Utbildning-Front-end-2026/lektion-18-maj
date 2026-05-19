@@ -40,7 +40,7 @@ body {
 h1,
 h2,
 h3 {
-    line-height: 1;
+    line-height: 1.0;
 }
 
 /* don't leave one single word hanging in paragraphs */
@@ -75,6 +75,7 @@ ol[role='list'] {
 body {
     font-family: Raleway, sans-serif;
     font-optical-sizing: auto;
+    background-color: snow;
 }
 
 h1,
@@ -99,13 +100,14 @@ i {
 /* this part is for styles for blocks like card, footer and so on */
 
 .card {
-    background-color: whitesmoke;
     max-width: 70ch;
+    font-size: .9rem;
     margin-inline: auto;
-
     /* margin-block-start: clamp(0rem, 3vw, 3rem); */
     padding: 1rem;
-    font-size: .9rem;
+
+    background-color: whitesmoke;
+    border: .125rem solid grey;
 }
 
 .card h2 {
@@ -126,8 +128,9 @@ i {
 
 
 .card footer {
+    background-color: snow;
     padding: 1em;
-    border: .125rem solid grey;
+    border: .125rem solid lightgray;
 }
 
 .card img {
