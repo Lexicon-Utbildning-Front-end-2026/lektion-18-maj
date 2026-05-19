@@ -135,6 +135,11 @@ i {
     background-color: var(--clr-gray-100);
 }
 
+.text-gray-100 {
+    color: var(--clr-gray-100);
+}
+
+
 
 
 
